@@ -1,0 +1,8 @@
+=== YOLOv11 Inference Log ===
+Inference time: 2025-08-02 04:17:36.605790
+Input: D:\NVTM\test_img\testd.jpg
+Inference duration: 5.8198 seconds
+Saved to: D:/NVTM/results\labels
+Classes detected:
+- Biển gộp làn đường theo phương tiện
+- Giới hạn tốc độ (40km/h)

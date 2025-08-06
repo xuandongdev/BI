@@ -1,0 +1,5 @@
+=== Inference Log ===
+Inference time: 2025-07-11 17:05:44.572437
+Input: D:\NVTM\test_img\test2.jpg
+Saved to: D:/NVTM/results\labels
+Classes detected:

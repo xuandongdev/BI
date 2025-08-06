@@ -1,0 +1,57 @@
+#form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#form .form-control {
+    max-width: 100%;
+    margin-bottom: 15px;
+}
+
+#loading {
+    padding: 20px;
+}
+
+#loading .spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+#result {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#result .col-md-6 {
+    padding: 15px;
+}
+
+#result h4 {
+    color: #495057;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+#result img {
+    transition: transform 0.3s ease;
+}
+
+#result img:hover {
+    transform: scale(1.02);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 3em;
+}
+
+.img {
+    max-width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    box-shadow: #495057 0px 0px 10px;
+}

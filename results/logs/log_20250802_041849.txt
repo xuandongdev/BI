@@ -1,0 +1,7 @@
+=== YOLOv11 Inference Log ===
+Inference time: 2025-08-02 04:18:54.816677
+Input: D:\NVTM\test_img\teste.jpg
+Inference duration: 5.7892 seconds
+Saved to: D:/NVTM/results\labels
+Classes detected:
+- Cấm rẽ trái

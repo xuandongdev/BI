@@ -1,0 +1,8 @@
+=== Inference Log ===
+Inference time: 2025-08-02 03:31:56.277955
+Input: D:\NVTM\test_img\testa.jpg
+Inference duration: 4.0234 seconds
+Saved to: D:/NVTM/results\labels
+Classes detected:
+- Giới hạn tốc độ (50km/h)
+- Giới hạn tốc độ (40km/h)

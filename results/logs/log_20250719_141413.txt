@@ -1,0 +1,7 @@
+=== Inference Log ===
+Inference time: 2025-07-19 14:14:13.290734
+Input: D:\NVTM\test_img\test8.jpg
+Inference duration: 5.5320 seconds
+Saved to: D:/NVTM/results\labels
+Classes detected:
+- Phải đi vòng sang bên phải

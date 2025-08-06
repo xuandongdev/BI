@@ -1,0 +1,8 @@
+=== Inference Log ===
+Inference time: 2025-07-19 14:14:54.239066
+Input: D:\NVTM\test_img\test8.jpg
+Inference duration: 6.1174 seconds
+Saved to: D:/NVTM/results\labels
+Classes detected:
+- P131A_Cam_Do
+- R303_Chay_Theo_Vong_Xuyen

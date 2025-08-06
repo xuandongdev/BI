@@ -1,0 +1,8 @@
+=== Inference Log ===
+Inference time: 2025-08-02 13:53:16.294282
+Input: D:\NVTM\test_img\test82.jpg
+Inference duration: 8.0290 seconds
+Saved to: D:/NVTM/results\labels
+Classes detected:
+- P127_Toc_Do_Toi_Da
+- P131A_Cam_Do

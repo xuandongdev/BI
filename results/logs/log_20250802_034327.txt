@@ -1,0 +1,8 @@
+=== Inference Log ===
+Inference time: 2025-08-02 03:43:30.800460
+Input: D:\NVTM\test_img\teste.jpg
+Inference duration: 3.4581 seconds
+Saved to: D:/NVTM/results\labels
+Classes detected:
+- Chỗ ngoặt nguy hiểm vòng bên trái
+- Cấm rẽ phải

@@ -1,0 +1,6 @@
+=== Inference Log ===
+Inference time: 2025-07-10 22:53:40.928150
+Image path: D:/NVTM/test_img/test1.jpg
+Saved to: D:/NVTM/results\labels
+Classes detected:
+- W210_Giao_Voi_Duong_Sat_Co_Rao

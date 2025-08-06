@@ -1,0 +1,6 @@
+=== Inference Log ===
+Inference time: 2025-07-11 17:16:34.237971
+Input: D:\NVTM\test_img\test6.jpg
+Saved to: D:/NVTM/results\labels
+Classes detected:
+- P127_Toc_Do_Toi_Da

@@ -1,0 +1,8 @@
+=== Inference Log ===
+Inference time: 2025-08-02 03:33:34.817648
+Input: D:\NVTM\test_img\testb.jpg
+Inference duration: 7.7099 seconds
+Saved to: D:/NVTM/results\labels
+Classes detected:
+- Cấm dừng và đỗ xe
+- Biển gộp làn đường theo phương tiện

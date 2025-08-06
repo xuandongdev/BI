@@ -1,0 +1,10 @@
+=== YOLOv11 Inference Log ===
+Inference time: 2025-08-02 04:16:02.644224
+Input: D:\NVTM\test_img\testb.jpg
+Inference duration: 5.9400 seconds
+Saved to: D:/NVTM/results\labels
+Classes detected:
+- Cấm dừng và đỗ xe
+- Biển gộp làn đường theo phương tiện
+- Giới hạn tốc độ (60km/h)
+- Cấm đỗ xe

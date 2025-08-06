@@ -1,0 +1,11 @@
+=== Inference Log ===
+Inference time: 2025-08-02 03:32:48.793918
+Input: D:\NVTM\test_img\testb.jpg
+Inference duration: 4.0290 seconds
+Saved to: D:/NVTM/results\labels
+Classes detected:
+- Cấm dừng và đỗ xe
+- Biển gộp làn đường theo phương tiện
+- Cấm ô tô khách và ô tô tải
+- Cấm rẽ phải
+- Giới hạn tốc độ (60km/h)

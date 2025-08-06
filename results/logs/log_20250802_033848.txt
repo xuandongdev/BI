@@ -1,0 +1,7 @@
+=== Inference Log ===
+Inference time: 2025-08-02 03:38:51.851509
+Input: D:\NVTM\test_img\testc.jpg
+Inference duration: 3.7564 seconds
+Saved to: D:/NVTM/results\labels
+Classes detected:
+- W245A_Di_Cham

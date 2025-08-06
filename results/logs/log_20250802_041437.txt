@@ -1,0 +1,7 @@
+=== YOLOv11 Inference Log ===
+Inference time: 2025-08-02 04:14:45.550274
+Input: D:\NVTM\test_img\testa.jpg
+Inference duration: 7.6801 seconds
+Saved to: D:/NVTM/results\labels
+Classes detected:
+- Giới hạn tốc độ (60km/h)

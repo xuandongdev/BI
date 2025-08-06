@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Traffic Detection</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1>TRAFFIC DETECTION</h1>
+
+  <form class="form mb-3" id="form">
+    <!-- <input class="btn btn-outline-primary" type="file" name="image" id="image" accept="image/*"> -->
+    <label for="formFile" class="form-label">Tải lên hình ảnh muốn nhận diện:</label>
+    <input class="form-control" type="file" name="image" id="image" accept="image/*">
+    <label for="modelSelect" class="form-label">Chọn phiên bản YOLO</label>
+    <select class="form-select mb-3" id="modelSelect" name="model">
+      <option value="yolov5">YOLOv5</option>
+      <option value="yolov8" selected>YOLOv8</option>
+      <option value="yolov5_half" selected>YOLOv5_HALF</option>
+      <option value="yolov8_half" selected>YOLOv8_HALF</option>
+      <option value="yolov11">YOLOv11</option>
+    </select>
+    <button type="submit" class="btn btn-primary btn-sm">Bắt đầu nhận diện</button>
+  </form>
+
+
+  <hr>
+
+  <!-- Loading spinner -->
+  <div id="loading" class="text-center" style="display: none;">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <p class="mt-2">Đang xử lý ảnh, vui lòng đợi...</p>
+  </div>
+
+  <div id="result"></div>
+
+  <script>
+    document.getElementById('form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const fileInput = document.getElementById('image');
+      if (!fileInput.files[0]) {
+        alert('Vui lòng chọn ảnh trước khi nhấn nút!');
+        return;
+      }
+
+      document.getElementById('loading').style.display = 'block';
+      document.getElementById('result').innerHTML = '';
+
+      const submitBtn = document.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = 'Đang xử lý...';
+
+      try {
+        const formData = new FormData();
+        formData.append('image', fileInput.files[0]);
+        const selectedModel = document.getElementById('modelSelect').value;
+        formData.append('model', selectedModel);
+
+        const res = await fetch('/run', {
+          method: 'POST',
+          body: formData
+        });
+
+        if (!res.ok) {
+          throw new Error(`Server error: ${res.status}`);
+        }
+
+        const data = await res.json();
+
+        document.getElementById('loading').style.display = 'none';
+
+        document.getElementById('result').innerHTML = `
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6">
+                <h4 class="text-center mb-3">Hình ảnh sau khi nhận dạng</h4>
+                <div class="text-center">
+                  <img src="data:image/jpeg;base64,${data.image}" class="img-fluid" style="max-width:100%; border-radius:10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <h4 class="text-center mb-3">Kết quả nhận dạng được:</h4>
+                <pre style="white-space:pre-wrap; background:#f8f9fa; padding:1.5em; border-radius:10px; border: 1px solid #dee2e6; font-size: 0.9em; max-height: 400px; overflow-y: auto;">${data.log}</pre>
+              </div>
+            </div>
+          </div>
+        `;
+
+      } catch (error) {
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('result').innerHTML = `
+          <div class="alert alert-danger" role="alert">
+            <strong>Lỗi:</strong> ${error.message}
+          </div>
+        `;
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Bắt đầu nhận diện';
+      }
+    });
+  </script>
+
+</body>
+
+</html>
