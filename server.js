@@ -12,10 +12,21 @@ app.use(express.static('public'));
 app.post('/run', upload.single('image'), (req, res) => {
     const tempPath = req.file.path;
     const originalName = req.file.originalname;
-    const testImgDir = 'D:/NVTM/test_img';
-    const finalPath = path.join(testImgDir, originalName);
-    const modelType = req.body.model;
-    const savedir = 'D:/NVTM/results';
+
+const testImgDir = path.join(__dirname, 'test_img');
+const finalPath = path.join(testImgDir, originalName);
+const modelType = req.body.model;
+const savedir = path.join(__dirname, 'results');
+
+
+    // Tạo thư mục test_img nếu chưa tồn tại
+    if (!fs.existsSync(testImgDir)) {
+        fs.mkdirSync(testImgDir, { recursive: true });
+    }
+    // Tạo thư mục results nếu chưa tồn tại
+    if (!fs.existsSync(savedir)) {
+        fs.mkdirSync(savedir, { recursive: true });
+    }
 
     if (!fs.existsSync(finalPath)) {
         fs.renameSync(tempPath, finalPath);
@@ -23,21 +34,22 @@ app.post('/run', upload.single('image'), (req, res) => {
         fs.unlink(tempPath, () => {});
     }
 
+
     let cmd = '';
     if (modelType === 'yolov5') {
-        cmd = `python D:/NVTM/modelv5.py --weights D:/NVTM/runs_yolov5/train_yolov5s/weights/best.pt --image "${finalPath}" --savedir "${savedir}"`;
+        cmd = `python ${path.join(__dirname, 'modelv5.py')} --weights ${path.join(__dirname, 'runs_yolov5', 'train_yolov5s', 'weights', 'best.pt')} --image "${finalPath}" --savedir "${savedir}"`;
     }
     else if (modelType === 'yolov5_half') {
-        cmd = `python D:/NVTM/modelv5.py --weights D:/NVTM/v5halfv2/yolov5_half_train/weights/best.pt --image "${finalPath}" --savedir "${savedir}"`;
+        cmd = `python ${path.join(__dirname, 'modelv5.py')} --weights ${path.join(__dirname, 'v5halfv2', 'yolov5_half_train', 'weights', 'best.pt')} --image "${finalPath}" --savedir "${savedir}"`;
     }
     else if (modelType === 'yolov8') {
-        cmd = `python D:/NVTM/model.py --weights D:/NVTM/runs/detect/train2/weights/best.pt --image "${finalPath}" --savedir "${savedir}"`;
+        cmd = `python ${path.join(__dirname, 'model.py')} --weights ${path.join(__dirname, 'runs', 'detect', 'train2', 'weights', 'best.pt')} --image "${finalPath}" --savedir "${savedir}"`;
     }
     else if (modelType === 'yolov8_half') {
-        cmd = `python D:/NVTM/model.py --weights D:/NVTM/v8half/best.pt --image "${finalPath}" --savedir "${savedir}"`;
+        cmd = `python ${path.join(__dirname, 'model.py')} --weights ${path.join(__dirname, 'v8half', 'best.pt')} --image "${finalPath}" --savedir "${savedir}"`;
     }
     else if (modelType === 'yolov11') {
-        cmd = `python D:/NVTM/modelv11.py --weights D:/NVTM/v11/best.pt --image "${finalPath}" --savedir "${savedir}"`;
+        cmd = `python ${path.join(__dirname, 'modelv11.py')} --weights ${path.join(__dirname, 'v11', 'best.pt')} --image "${finalPath}" --savedir "${savedir}"`;
     }
     else {
         return res.status(400).send("Model không hợp lệ.");
