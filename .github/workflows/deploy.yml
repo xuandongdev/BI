@@ -29,8 +29,15 @@ jobs:
       run: |
         mkdir -p test_img results/predict results/logs results/labels uploads
         
-    - name: Start server
+    - name: Test server locally
       run: |
         node server.js &
         sleep 5
         curl http://localhost:3000
+        
+    # Deploy to Render/Railway (example)
+    - name: Deploy to Render
+      if: github.ref == 'refs/heads/main'
+      run: |
+        echo "Deploying to production..."
+        # Add your deployment commands here
