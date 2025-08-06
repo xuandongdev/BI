@@ -27,7 +27,7 @@ jobs:
         
     - name: Create directories
       run: |
-        mkdir -p test_img results uploads
+        mkdir -p test_img results/predict results/logs results/labels uploads
         
     - name: Start server
       run: |
