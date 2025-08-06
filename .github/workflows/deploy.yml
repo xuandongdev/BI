@@ -1,0 +1,36 @@
+name: Deploy Server
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Install dependencies
+      run: |
+        npm install
+        pip install torch torchvision ultralytics
+        
+    - name: Create directories
+      run: |
+        mkdir -p test_img results uploads
+        
+    - name: Start server
+      run: |
+        node server.js &
+        sleep 5
+        curl http://localhost:3000
